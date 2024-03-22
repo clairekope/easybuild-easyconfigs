@@ -1,0 +1,22 @@
+# You MUST define $LM_LICENSE_FILE before running EasyBuild
+
+easyblock = 'EB_TotalView'
+
+name = 'TotalView'
+version = '2023.4.16'
+versionsuffix = '-linux-x86-64'
+
+homepage = 'https://totalview.io/products/totalview'
+description = """TotalView debugging software provides the specialized tools
+you need to quickly debug, analyze, and scale high-performance computing (HPC)
+applications. This includes highly dynamic, parallel, and multicore applications
+that run on diverse hardware — from desktops to supercomputers.
+Improve HPC development efficiency, code quality, and time-to-market with 
+TotalView’s powerful tools for faster fault isolation, improved memory optimization,
+and dynamic visualization."""
+
+toolchain = SYSTEM
+
+sources = ['%(namelower)s_%(version)s_linux_x86-64.tar']
+
+moduleclass = 'debugger'
