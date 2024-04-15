@@ -1,0 +1,28 @@
+name = 'Stata'
+version = '18'
+versionsuffix = '-SE'
+
+homepage = 'https://www.stata.com/'
+description = """Stata is a complete, integrated statistical
+ software package that provides everything you need
+ for data analysis, data management, and graphics."""
+
+toolchain = SYSTEM
+
+# Requires license to access source files
+# See also https://www.stata.com/support/faqs/unix/install-download-on-linux/
+# You can download the source tarball from: https://download.stata.com/download/
+# Once the installation with EB completes, you **must** generate the licence file
+# by executing the script "stinit" from the root of the installation directory.
+
+sources = ['Stata%(version)sLinux64.tar.gz']
+
+dependencies = [
+    ('ncurses', '5.9'),
+    ('zlib', '1.2.13'),    
+    ('libpng', '1.5.30'),
+]
+
+sanity_check_commands = ['stata -h']
+
+moduleclass = 'data'
