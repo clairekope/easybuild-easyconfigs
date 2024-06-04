@@ -19,7 +19,6 @@ sources = ['Stata%(version)sLinux64.tar.gz']
 
 dependencies = [
     ('ncurses', '5.9'),
-    ('zlib', '1.2.13'),    
     ('libpng', '1.5.30'),
 ]
 
