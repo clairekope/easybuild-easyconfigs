@@ -1,0 +1,63 @@
+easyblock = 'PackedBinary'
+
+name = 'Kraken2'
+version = '2.1.2'
+
+homepage = 'https://github.com/DerrickWood/kraken2/wiki'
+description = """Kraken is a system for assigning taxonomic labels to short DNA sequences,
+ usually obtained through metagenomic studies. Previous attempts by other
+ bioinformatics software to accomplish this task have often used sequence
+ alignment or machine learning techniques that were quite slow, leading to
+ the development of less sensitive but much faster abundance estimation
+ programs. Kraken aims to achieve high sensitivity and high speed by
+ utilizing exact alignments of k-mers and a novel classification algorithm."""
+
+# part is compiled with $CXX, the rest is in Perl
+toolchain = {'name': 'gompi', 'version': '2023a'}
+toolchainopts = {'openmp': True, 'cstd': 'c++11'}
+
+source_urls = [GITHUB_LOWER_SOURCE]
+sources = ['v%(version)s.tar.gz']
+patches = [
+    '%(name)s-%(version_major_minor)s.1_fix_installation_for_easybuild.patch',
+    '%(name)s-%(version)s_fix_ncbi_https_server.patch',
+]
+checksums = [
+    'e5f431e8bc3d5493a79e1d8125f4aacbad24f9ea2cc9657b66da06a32bef6ff3',  # v2.1.2.tar.gz
+    # %(name)s-%(version_major_minor)s.1_fix_installation_for_easybuild.patch
+    '5ea9093becbdf7705a29fd2e56050118700c850ac5374aae5ee9b5e5924d3a11',
+    '8db78096340352e97589a189a86a020ff31bd60f0c332a1794d532fabd5bd116',  # %(name)s-%(version_major_minor)s.2_fix_ncbi_https_server.patch
+]
+
+dependencies = [
+    ('Perl', '5.36.1'),
+    ('BLAST+', '2.14.1'),
+    ('wget', '1.21.3'),
+]
+
+github_account = 'DerrickWood'
+install_cmd = "cd %(builddir)s/%(namelower)s-%(version)s && ./install_kraken2.sh %(installdir)s/bin"
+
+# Kraken2 databases can be downloaded from https://benlangmead.github.io/aws-indexes/k2
+# or built as described in https://github.com/DerrickWood/kraken2/wiki/Manual#kraken-2-databases
+# The following commands will build and install the standard databases (100GB) in local_db_path
+# local_db_path = '%(installdir)s/db'
+# postinstallcmds = [
+# 'mkdir %s' % local_db_path,
+# 'cd %%(installdir)s/bin && ./kraken2-build --standard --threads %%(parallel)s --db %s' % local_db_path,
+# ]
+
+sanity_check_paths = {
+    'files': ['bin/16S_gg_installation.sh', 'bin/16S_rdp_installation.sh', 'bin/16S_silva_installation.sh', 'bin/add_to_library.sh', 'bin/build_db', 'bin/build_gg_taxonomy.pl', 'bin/build_kraken2_db.sh', 'bin/build_rdp_taxonomy.pl', 'bin/build_silva_taxonomy.pl', 'bin/classify', 'bin/clean_db.sh', 'bin/cp_into_tempfile.pl', 'bin/download_genomic_library.sh', 'bin/download_taxonomy.sh', 'bin/dump_table', 'bin/estimate_capacity', 'bin/%(namelower)s', 'bin/%(namelower)s-build', 'bin/%(namelower)s-inspect', 'bin/kraken2lib.pm', 'bin/lookup_accession_numbers.pl', 'bin/make_seqid2taxid_map.pl', 'bin/mask_low_complexity.sh', 'bin/rsync_from_ncbi.pl', 'bin/scan_fasta_file.pl'],
+    'dirs': [],
+}
+
+sanity_check_commands = [
+    "%(namelower)s --help",
+    "%(namelower)s-build --help",
+    "%(namelower)s-inspect --help",
+    "build_db -h",
+    "classify -h",
+]
+
+moduleclass = 'bio'
