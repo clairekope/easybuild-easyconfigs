@@ -1,0 +1,41 @@
+easyblock = 'Tarball'
+
+name = 'BRAKER'
+version = '3.0.8'
+
+homepage = 'https://github.com/Gaius-Augustus/BRAKER'
+description = """BRAKER is a pipeline for fully automated prediction of protein coding genes with GeneMark-ES/ET
+ and AUGUSTUS in novel eukaryotic genomes. Users may wish to personally install compleasm and MakeHub for additional functionality."""
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+
+source_urls = ['https://github.com/Gaius-Augustus/%(name)s/archive/']
+sources = ['v%(version)s.tar.gz']
+
+dependencies = [
+    ('Perl', '5.36.1'),
+    ('AUGUSTUS', '3.5.0'),
+    ('GeneMark-ETP', '1.02-preprint'),
+    ('BamTools', '2.5.2'),
+    ('SAMtools', '1.18'),
+    ('spaln', '2.4.13f'),
+    ('BLAST+', '2.14.1'),
+    ('Biopython', '1.83'),
+    ('DIAMOND', '2.1.8'),
+    ('CDBtools', '0.99'), 
+    ('HISAT2', '2.2.1'),
+    ('SRA-Toolkit','3.0.10'),
+]
+
+fix_perl_shebang_for = ['scripts/*.pl']
+
+sanity_check_paths = {
+    'files': ['scripts/%(namelower)s.pl', 'scripts/findGenesInIntrons.pl', 'scripts/filterGenemark.pl'],
+    'dirs': ['docs', 'example'],
+}
+
+sanity_check_commands = ['%(namelower)s.pl --help']
+
+modextrapaths = {'PATH': 'scripts'}
+
+moduleclass = 'bio'

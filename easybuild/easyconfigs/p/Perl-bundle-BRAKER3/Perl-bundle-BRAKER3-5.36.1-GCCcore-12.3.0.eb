@@ -1,0 +1,137 @@
+easyblock = 'PerlBundle'
+
+name = 'Perl-bundle-BRAKER3'
+version = '5.36.1'
+
+homepage = 'https://www.perl.org/'
+description = """The set of packages needed for BRAKER3 & its dependency GeneMark-ETP"""
+
+toolchain = {'name': 'GCCcore', 'version': '12.3.0'}
+toolchainopts = {'pic': True}
+
+builddependencies = [
+    ('binutils', '2.40'),
+    ('groff', '1.22.4'),
+]
+
+dependencies = [
+    ('Perl', version),
+]
+
+# !! order of extensions is important !!
+# extensions updated on 2024-07-05
+exts_list = [
+    ('Test::Deep', '1.204', {
+        'source_tmpl': 'Test-Deep-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/R/RJ/RJBS'],
+        'checksums': ['b6591f6ccdd853c7efc9ff3c5756370403211cffe46047f082b1cd1611a84e5f'],
+    }),
+    ('Role::Tiny', '2.002004', {
+        'source_tmpl': 'Role-Tiny-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/H/HA/HAARG'],
+        'checksums': ['d7bdee9e138a4f83aa52d0a981625644bda87ff16642dfa845dcb44d9a242b45'],
+    }),
+    ('Sub::Quote', '2.006008', {
+        'source_tmpl': 'Sub-Quote-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/H/HA/HAARG'],
+        'checksums': ['94bebd500af55762e83ea2f2bc594d87af828072370c7110c60c238a800d15b2'],
+    }),
+    ('Class::Method::Modifiers', '2.15', {
+        'source_tmpl': 'Class-Method-Modifiers-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/E/ET/ETHER'],
+        'checksums': ['65cd85bfe475d066e9186f7a8cc636070985b30b0ebb1cde8681cf062c2e15fc'],
+    }),
+    ('Moo', '2.005005', {
+        'source_tmpl': 'Moo-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/H/HA/HAARG'],
+        'checksums': ['fb5a2952649faed07373f220b78004a9c6aba387739133740c1770e9b1f4b108'],
+    }),
+    ('Sub::Uplevel', '0.2800', {
+        'source_tmpl': 'Sub-Uplevel-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN'],
+        'checksums': ['b4f3f63b80f680a421332d8851ddbe5a8e72fcaa74d5d1d98f3c8cc4a3ece293'],
+    }),
+    ('Test::Warn', '0.37', {
+        'source_tmpl': 'Test-Warn-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/B/BI/BIGJ'],
+        'checksums': ['98ca32e7f2f5ea89b8bfb9a0609977f3d153e242e2e51705126cb954f1a06b57'],
+    }),
+    ('Test::Without::Module', '0.21', {
+        'source_tmpl': 'Test-Without-Module-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/C/CO/CORION'],
+        'checksums': ['3cdeafadac4853ebeafe689346d555da5dfa3cfa9d4c84e3e5e7bfee50beec46'],
+    }),
+    ('Clone::Choose', '0.010', {
+        'source_tmpl': 'Clone-Choose-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/H/HE/HERMES'],
+        'checksums': ['5623481f58cee8edb96cd202aad0df5622d427e5f748b253851dfd62e5123632'],
+    }),
+    ('Hash::Merge', '0.302', {
+        'source_tmpl': 'Hash-Merge-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/H/HE/HERMES'],
+        'checksums': ['ae0522f76539608b61dde14670e79677e0f391036832f70a21f31adde2538644'],
+    }),
+    ('File::Temp', '0.2311', {
+        'source_tmpl': 'File-Temp-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/E/ET/ETHER'],
+        'checksums': ['2290d61bf5c39882fc3311da9ce1c7f42dbdf825ae169e552c59fe4598b36f4a'],
+    }),
+    ('Parallel::ForkManager', '2.02', {
+        'source_tmpl': 'Parallel-ForkManager-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/Y/YA/YANICK'],
+        'checksums': ['c1b2970a8bb666c3de7caac4a8f4dbcc043ab819bbc337692ec7bf27adae4404'],
+    }),
+    ('Spiffy', '0.46', {
+        'source_tmpl': 'Spiffy-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/I/IN/INGY'],
+        'checksums': ['8f58620a8420255c49b6c43c5ff5802bd25e4f09240c51e5bf2b022833d41da3'],
+    }),
+    ('Test::Base', '0.89', {
+        'source_tmpl': 'Test-Base-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/I/IN/INGY'],
+        'checksums': ['2794a1aaaeb1d3a287dd2c7286258663796562f7db9ccc6b424bc4f1de8ad014'],
+    }),
+    ('Test::YAML', '1.07', {
+        'source_tmpl': 'Test-YAML-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/T/TI/TINITA'],
+        'checksums': ['1f300d034f46298cb92960912cc04bac33fb27f05b8852d8f051e110b9cd995f'],
+    }),
+    ('YAML', '1.30', {
+        'source_tmpl': 'YAML-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/T/TI/TINITA'],
+        'checksums': ['5030a6d6cbffaf12583050bf552aa800d4646ca9678c187add649227f57479cd'],
+    }),
+    ('YAML::XS', '0.89', {
+        'source_tmpl': 'YAML-LibYAML-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/T/TI/TINITA'],
+        'checksums': ['155ab83675345c50add03311acf9dd915955707f909a2abd8b17d7792859b2ec'],
+    }),
+    ('MCE::Mutex', '1.884', {
+        'runtest': False,
+        'source_tmpl': 'MCE-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/M/MA/MARIOROY'],
+        'checksums': ['c830c0e548094f19c620049e744258be2c121d4a86cf7c94a37599ad016daf33'],
+    }),
+    ('Math::Utils', '1.14', {
+        'source_tmpl': 'Math-Utils-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/J/JG/JGAMBLE'],
+        'checksums': ['88a20ae0736a622671b92bb2a350969af424d7610284530b277c8020235f2695'],
+    }),
+    ('Statistics::LineFit', '0.07', {
+        'source_tmpl': 'Statistics-LineFit-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/R/RA/RANDERSON'],
+        'checksums': ['0012a9a992a9145999e55f616289c98958c7e87e4643f781028f8c14c8871f84'],
+    }),
+    ('Scalar::Util::Numeric', '0.40', {
+        'source_tmpl': 'Scalar-Util-Numeric-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/C/CH/CHOCOLATE'],
+        'checksums': ['d7501b6d410703db5b1c1942fbfc41af8964a35525d7f766058acf5ca2cc4440'],
+    }),
+        ('File::Which', '1.27', {
+        'source_tmpl': 'File-Which-%(version)s.tar.gz',
+        'source_urls': ['https://cpan.metacpan.org/authors/id/P/PL/PLICEASE'],
+        'checksums': ['3201f1a60e3f16484082e6045c896842261fc345de9fb2e620fd2a2c7af3a93a'],
+    }),
+]
+
+moduleclass = 'lang'

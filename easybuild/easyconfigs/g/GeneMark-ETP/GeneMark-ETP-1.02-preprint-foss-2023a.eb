@@ -1,0 +1,29 @@
+easyblock = 'Tarball'
+
+name = 'GeneMark-ETP'
+version = '1.02-preprint'
+
+homepage = 'https://github.com/gatech-genemark/GeneMark-ETP'
+description = "Gene finding in eukaryotic genomes"
+
+toolchain = {'name': 'foss', 'version': '2023a'}
+
+source_urls = ['https://github.com/gatech-genemark/%(name)s/releases/download/etp-v%(version)s']
+sources = ['%(name)s.tar.gz']
+checksums = ['331e9d05be8f2b806d90c0e1acdac444818b1fec4a4f7064d8de641b9073fa9d']
+
+dependencies = [
+    ('Perl', '5.36.1'), 
+    ('Perl-bundle-BRAKER3', '5.36.1'), # GeneMark-ETP is a dependency of BRAKER3
+]
+
+fix_perl_shebang_for = ['*.pl']
+
+sanity_check_paths = {
+    'files': ['bin/gmetp.pl', 'bin/gmst/gmst.pl', 'bin/gmes/gmes_petap.pl'],
+    'dirs': ['bin','tools'],
+}
+
+sanity_check_commands = ['gmetp.pl | grep "Usage"']
+
+moduleclass = 'bio'
