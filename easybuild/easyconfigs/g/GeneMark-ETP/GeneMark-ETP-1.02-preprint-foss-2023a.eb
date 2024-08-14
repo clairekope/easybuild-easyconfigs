@@ -28,6 +28,6 @@ sanity_check_commands = ['gmetp.pl | grep "Usage"',
                          'gmst.pl --version | grep "version"', # just running "version" returns exit code 1 for some reason
                          'gmes_petap.pl | grep "Usage"']
 
-modextrapaths = {'PATH': ('bin/gmst','bin/gmes')}
+modextrapaths = {'PATH': ('bin/gmst','bin/gmes','tools')}
 
 moduleclass = 'bio'
